@@ -1,0 +1,104 @@
+{
+    "version": "2.0.0",
+    "items": [
+        {
+            "itemId": "item-id-c5a05dd3-df44-4ae8-93fa-6850b10d5185",
+            "itemType": "terminal-start",
+            "childrenItemIds": [],
+            "parentItemId": "flow-id-c5d0cdcc-a560-4f9f-ade3-41914235d5d0",
+            "options": [
+                {
+                    "name": "テキスト",
+                    "value": "",
+                    "type": "text",
+                    "inputArgs": null,
+                    "visible": true
+                }
+            ]
+        },
+        {
+            "itemId": "item-id-52227683-1e62-4b78-bcc0-5c71d0f3cab7",
+            "itemType": "terminal-end",
+            "childrenItemIds": [],
+            "parentItemId": "flow-id-c5d0cdcc-a560-4f9f-ade3-41914235d5d0",
+            "options": [
+                {
+                    "name": "戻り値を返す",
+                    "value": false,
+                    "type": "checkbox",
+                    "inputArgs": null,
+                    "visible": true
+                },
+                {
+                    "name": "戻り値",
+                    "value": "",
+                    "type": "text",
+                    "inputArgs": null,
+                    "visible": true
+                }
+            ]
+        },
+        {
+            "itemId": "flow-id-c5d0cdcc-a560-4f9f-ade3-41914235d5d0",
+            "itemType": "flow",
+            "childrenItemIds": [
+                "item-id-c5a05dd3-df44-4ae8-93fa-6850b10d5185",
+                "item-id-b3c1759c-8ee5-46bb-aff7-bdd3e5490aa0",
+                "item-id-d2c19ff5-6ae6-498a-bd2d-c9c80d3aad0d",
+                "item-id-52227683-1e62-4b78-bcc0-5c71d0f3cab7"
+            ],
+            "parentItemId": null,
+            "tag": ""
+        },
+        {
+            "itemId": "item-id-d2c19ff5-6ae6-498a-bd2d-c9c80d3aad0d",
+            "itemType": "calc",
+            "childrenItemIds": [],
+            "parentItemId": "flow-id-c5d0cdcc-a560-4f9f-ade3-41914235d5d0",
+            "options": [
+                {
+                    "name": "式",
+                    "value": "0",
+                    "type": "text",
+                    "inputArgs": null,
+                    "visible": true
+                },
+                {
+                    "name": "代入先変数",
+                    "value": "B",
+                    "type": "text",
+                    "inputArgs": null,
+                    "visible": true
+                }
+            ]
+        },
+        {
+            "itemId": "item-id-b3c1759c-8ee5-46bb-aff7-bdd3e5490aa0",
+            "itemType": "calc",
+            "childrenItemIds": [],
+            "parentItemId": "flow-id-c5d0cdcc-a560-4f9f-ade3-41914235d5d0",
+            "options": [
+                {
+                    "name": "式",
+                    "value": "0",
+                    "type": "text",
+                    "inputArgs": null,
+                    "visible": true
+                },
+                {
+                    "name": "代入先変数",
+                    "value": "A",
+                    "type": "text",
+                    "inputArgs": null,
+                    "visible": true
+                }
+            ]
+        }
+    ],
+    "meta": {
+        "flowIds": [
+            "flow-id-c5d0cdcc-a560-4f9f-ade3-41914235d5d0"
+        ],
+        "title": "basic"
+    }
+}

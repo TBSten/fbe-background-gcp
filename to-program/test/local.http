@@ -1,0 +1,9 @@
+
+
+POST http://localhost:8080/
+Content-Type: application/json
+
+{
+    "target":"javascript",
+    "fbe":{"version":"2.0.0","items":[{"itemId":"item-id-e6cb19dd-f008-4c94-8727-f7b95a72056e","itemType":"terminal-start","childrenItemIds":[],"parentItemId":"flow-id-46bda2a1-2065-40fa-bdff-e664810d4b4e","options":[{"name":"テキスト","value":"","type":"text","inputArgs":null,"visible":true}]},{"itemId":"item-id-1cdb4056-4c54-4d77-ad51-e805fea3487b","itemType":"terminal-end","childrenItemIds":[],"parentItemId":"flow-id-46bda2a1-2065-40fa-bdff-e664810d4b4e","options":[{"name":"戻り値を返す","value":false,"type":"checkbox","inputArgs":null,"visible":true},{"name":"戻り値","value":"","type":"text","inputArgs":null,"visible":true}]},{"itemId":"flow-id-46bda2a1-2065-40fa-bdff-e664810d4b4e","itemType":"flow","childrenItemIds":["item-id-e6cb19dd-f008-4c94-8727-f7b95a72056e","item-id-8765d077-2291-4ff3-a679-230d7ded42f4","item-id-1cdb4056-4c54-4d77-ad51-e805fea3487b"],"parentItemId":null,"tag":""},{"itemId":"item-id-8765d077-2291-4ff3-a679-230d7ded42f4","itemType":"calc","childrenItemIds":[],"parentItemId":"flow-id-46bda2a1-2065-40fa-bdff-e664810d4b4e","options":[{"name":"式","value":"0","type":"text","inputArgs":null,"visible":true},{"name":"代入先変数","value":"合計","type":"text","inputArgs":null,"visible":true}]}],"meta":{"flowIds":["flow-id-46bda2a1-2065-40fa-bdff-e664810d4b4e"],"title":"simple flowchart"}}
+}

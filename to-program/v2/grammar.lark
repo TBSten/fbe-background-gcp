@@ -1,0 +1,87 @@
+%import common ( NUMBER , WS , ESCAPED_STRING )
+
+?start: expr
+
+// 演算子
+
+// expr        : term [ "+" expr ]
+// term        : factor [ "*" term ]
+// factor      : number | string | "(" expr ")"
+
+expr: logic
+
+// keyword :"かつ"
+//     |"または"
+//     |"&&"
+//     |"||"
+//     |"="
+//     |"=="
+//     |"!="
+//     |"<>"
+//     |">"
+//     |"<"
+//     |">="
+//     |"<="
+//     |"+"
+//     |"-"
+//     |"*"
+//     |"/"
+//     |"%"
+//     |"("
+//     |")"
+
+//演算式
+
+//かつ または && ||
+logic: logic "かつ" bool -> logic_and
+    | logic "または" bool -> logic_or
+    | logic "&&" bool -> logic_and
+    | logic "||" bool -> logic_or
+    | bool
+// = == != <> > < >= <=
+bool: bool "=" sum      -> eq
+    | bool "==" sum     -> eq
+    | bool "!=" sum     -> ne
+    | bool "<>" sum     -> ne
+    | bool ">" sum      -> lt
+    | bool "<" sum      -> st
+    | bool ">=" sum     -> le
+    | bool "<=" sum     -> se
+    | sum
+// + - 
+sum: sum "+" product    -> add
+    | sum "-" product   -> sub
+    | product
+// * / %
+product:  product "*" atom  -> mul
+    | product "/" atom  -> div
+    | product "%" atom  -> div
+    | atom
+
+// 項
+atom: number
+    | "+" atom          -> pos
+    | "-" atom          -> neg
+    | string
+    | boolean
+    | "(" expr ")"
+    | ref
+    | var
+
+
+// リテラル
+
+integer         : /[0-9]+/
+double          : NUMBER
+number          : integer | double
+string          : "\"" CHAR+ "\"" 
+boolean         : "true" | "false" | "True" | "False"
+var             : not_keyword_char+  //ここでキーワード以外の任意の文字の繰り返しと指定したい
+ref             : not_keyword_char+ "[" expr "]"
+not_keyword_char: /(?!かつ|または|&&|\|\||=|==|!=|<>|>|<|>=|<=|\+|\-|\*|\/|%|\(|\)|\[|\])./
+
+CHAR            : /./
+
+%ignore WS
+
+
