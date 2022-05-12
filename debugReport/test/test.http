@@ -1,0 +1,15 @@
+
+POST https://asia-northeast1-fbe-gcp-project.cloudfunctions.net/debugReport
+Content-Type: application/json
+
+{
+    "logs":[
+        {"message":"this is test first message","level":10},
+        {"message":"this is test second message","level":20},
+        {"message":"this is test third message","level":30},
+        {"message":"this is test forced message","level":40}
+    ]
+}
+
+# OPTIONS https://asia-northeast1-fbe-gcp-project.cloudfunctions.net/debugReport
+

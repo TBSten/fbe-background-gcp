@@ -1,0 +1,87 @@
+POST http://localhost:8080
+# POST https://asia-northeast1-fbe-gcp-project.cloudfunctions.net/tmpSave
+Content-Type: application/json
+
+{
+    "fbe": {
+        "version": "X.X.X",
+        "items": [
+            {
+                "itemId": "item-id-930d1da6-c315-490a-ac7d-83e2bf31bb62",
+                "itemType": "terminal-start",
+                "childrenItemIds": [],
+                "parentItemId": "flow-id-b16b8127-b417-4a87-9f8b-9949d046a4f5",
+                "options": [
+                    {
+                        "name": "テキスト",
+                        "value": "",
+                        "type": "text",
+                        "inputArgs": null,
+                        "visible": true
+                    }
+                ]
+            },
+            {
+                "itemId": "item-id-f83f0c50-8e39-4c6f-8dde-817737aca059",
+                "itemType": "terminal-end",
+                "childrenItemIds": [],
+                "parentItemId": "flow-id-b16b8127-b417-4a87-9f8b-9949d046a4f5",
+                "options": [
+                    {
+                        "name": "戻り値を返す",
+                        "value": false,
+                        "type": "checkbox",
+                        "inputArgs": null,
+                        "visible": true
+                    },
+                    {
+                        "name": "戻り値",
+                        "value": "",
+                        "type": "text",
+                        "inputArgs": null,
+                        "visible": true
+                    }
+                ]
+            },
+            {
+                "itemId": "flow-id-b16b8127-b417-4a87-9f8b-9949d046a4f5",
+                "itemType": "flow",
+                "childrenItemIds": [
+                    "item-id-930d1da6-c315-490a-ac7d-83e2bf31bb62",
+                    "item-id-26ea2407-6cc1-46f7-b701-0e68cb194995",
+                    "item-id-f83f0c50-8e39-4c6f-8dde-817737aca059"
+                ],
+                "parentItemId": null,
+                "tag": ""
+            },
+            {
+                "itemId": "item-id-26ea2407-6cc1-46f7-b701-0e68cb194995",
+                "itemType": "calc",
+                "childrenItemIds": [],
+                "parentItemId": "flow-id-b16b8127-b417-4a87-9f8b-9949d046a4f5",
+                "options": [
+                    {
+                        "name": "式",
+                        "value": "0",
+                        "type": "text",
+                        "inputArgs": null,
+                        "visible": true
+                    },
+                    {
+                        "name": "代入先変数",
+                        "value": "合計",
+                        "type": "text",
+                        "inputArgs": null,
+                        "visible": true
+                    }
+                ]
+            }
+        ],
+        "meta": {
+            "flowIds": [
+                "flow-id-b16b8127-b417-4a87-9f8b-9949d046a4f5"
+            ],
+            "title": "タイトル未設定"
+        }
+    }
+}
