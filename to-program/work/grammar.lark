@@ -1,0 +1,54 @@
+%import common ( NUMBER , WS , ESCAPED_STRING )
+
+?start: expr
+
+// 演算子
+
+// expr        : term [ "+" expr ]
+// term        : factor [ "*" term ]
+// factor      : number | string | "(" expr ")"
+
+expr: logic
+
+//演算式
+
+logic: bool
+    | logic "かつ" bool -> logic_and
+    | logic "または" bool -> logic_or
+    | logic "&&" bool -> logic_and
+    | logic "||" bool -> logic_or
+bool: sum
+    | bool "=" sum      -> eq
+    | bool "!=" sum     -> ne
+    | bool "<>" sum     -> ne
+    | bool ">" sum      -> lt
+    | bool "<" sum      -> st
+    | bool ">=" sum     -> le
+    | bool "<=" sum     -> se
+sum: product
+    | sum "+" product   -> add
+    | sum "-" product   -> sub
+product: atom
+    | product "*" atom  -> mul
+    | product "/" atom  -> div
+    | product "%" atom  -> div
+atom: number
+    | "+" atom          -> pos
+    | "-" atom          -> neg
+    | string
+    | boolean
+    | "(" expr ")"
+    | var
+
+
+// リテラル
+
+number          : NUMBER
+string          : "\"" CHAR+ "\"" 
+boolean         : "True" | "False"
+var             : /.+/
+
+CHAR            : /./
+
+%ignore WS
+

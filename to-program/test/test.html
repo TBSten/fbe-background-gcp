@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        pre#content {
+            border: solid 2px black;
+            padding: 0.75em;
+            border-radius: 10px;
+            min-height: 2em;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <textarea id="textarea" cols="30" rows="10"></textarea>
+    <input type="text" id="lang" value="python">
+    <button id="convert">変換</button>
+    <pre id="content"></pre>
+    <button id="exe">実行</button>
+
+
+
+
+    <script>
+        const convert = document.getElementById("convert");
+        const exe = document.getElementById("exe");
+        const content = document.getElementById("content");
+        const textarea = document.getElementById("textarea")
+        const lang = document.getElementById("lang")
+        const getFBE = () => {
+            const value = textarea.value;
+            return JSON.parse(value)
+        }
+        convert.addEventListener("click", () => {
+            const globalUrl = "https://asia-northeast1-fbe-gcp-project.cloudfunctions.net/fbeToProgram";
+            const localUrl = "http://localhost:8080/";
+            const url = localUrl;
+            fetch(url, {
+                headers: new Headers({
+                    "Content-Type": "application/json"
+                }),
+                method: "POST",
+                body: JSON.stringify({
+                    target: lang.value,
+                    fbe: getFBE()
+                }),
+                cache: "no-cache",
+            })
+                .then(r => {
+                    return r.json()
+                })
+                .then(json => {
+                    console.log("fetch response json", json)
+                    content.innerHTML = json.result
+                })
+                .catch(e => {
+                    content.innerHTML = e
+                    console.error(e);
+                });
+        })
+        exe.addEventListener("click", () => {
+            const program = content.innerText;
+            eval(program)
+        })
+        const textareaKey = "save-data-textarea"
+        const langKey = "save-data-lang"
+        function save() {
+            localStorage.setItem(textareaKey, textarea.value)
+            localStorage.setItem(langKey, lang.value)
+        }
+        setInterval(save, 1000)
+        function load() {
+            const taValue = localStorage.getItem(textareaKey)
+            textarea.value = taValue;
+            const langValue = localStorage.getItem(langKey)
+            lang.value = langValue;
+        }
+        load();
+
+    </script>
+</body>
+
+</html>
